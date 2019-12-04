@@ -1,8 +1,9 @@
 Vue.component('navbar',{
     props:{
-        title:String
+        title:String,
+        difficulty:String
     },
-    template: "<h3>{{title}}</h3>"
+    template: "<h3>{{title}}  ({{difficulty}})</h3>"
 })
 
 Vue.component('difficulty-button',{
@@ -33,8 +34,14 @@ var app=new Vue({
     chosen_difficulty:""
   },
   methods:{
-      changeDifficulty: function(newDifficulty){
+      changeDifficulty:function(newDifficulty){
           this.chosen_difficulty=newDifficulty;
-      }
-  }
+      },
+      clearDifficultyButtons:function(){
+          buttons=document.querySelectorAll(div.button);
+          buttons.forEach(function(currentValue){
+            currentValue.remove();
+            });
+        },
+    },
 })
