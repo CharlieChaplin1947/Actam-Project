@@ -1,6 +1,22 @@
-<center id="headline">Select the difficulty</center>
-<div id="container">
-  <div class=button onclick="setEasy()">Easy</div>
-  <div class=button onclick="setNormal()">Normal</div>
-  <div class=button onclick="setHard()">Hard</div>
-</div>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="stylesheet" type="text/css" href="MusicIntervals.css">
+    </head>
+
+    <body>
+        <div id="app">
+            <navbar id="navbar" :title="mainTitle">
+            </navbar>
+            <h2 id="headline">
+                Select the difficulty
+            </h2>
+          <div id="container">
+            <difficulty-button :difficulty="easy" id="easy_button"></difficulty-button>    
+            <difficulty-button :difficulty="medium" id="medium_button"></difficulty-button>
+            <difficulty-button :difficulty="hard" id="hard_button"></difficulty-button>
+          </div>
+        </div>
+        <script src="MusicIntervals.js"></script>
+    </body>
+</html>
