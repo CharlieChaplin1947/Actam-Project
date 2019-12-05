@@ -19,6 +19,7 @@ Vue.component('difficulty-button',{
         toggleFunction: function(){
             this.clicked=!this.clicked;
             app.changeDifficulty(this.difficulty);
+            app.clearDifficultyButtons();
         }
     },
     template:"<button @click='toggleFunction'>{{difficulty}} {{clicked ? 'ON':'OFF'}}</button>"
@@ -38,10 +39,9 @@ var app=new Vue({
           this.chosen_difficulty=newDifficulty;
       },
       clearDifficultyButtons:function(){
-          buttons=document.querySelectorAll(div.button);
-          buttons.forEach(function(currentValue){
-            currentValue.remove();
-            });
+          document.getElementById("easy_button").remove();
+          document.getElementById("medium_button").remove();
+          document.getElementById("hard_button").remove();
         },
     },
 })
