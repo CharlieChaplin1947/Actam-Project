@@ -19,6 +19,7 @@ Vue.component('difficulty-button',{
         toggleFunction: function(){
             this.clicked=!this.clicked;
             app.changeDifficulty(this.difficulty);
+            app.setFrequencies(this.difficulty);
             app.clearDifficultyButtons();
         }
     },
@@ -32,7 +33,8 @@ var app=new Vue({
     easy:"easy",
     medium:"medium",
     hard:"hard",
-    chosen_difficulty:""
+    chosen_difficulty:"",
+    frequencies:[]
   },
   methods:{
       changeDifficulty:function(newDifficulty){
@@ -43,5 +45,26 @@ var app=new Vue({
           document.getElementById("medium_button").remove();
           document.getElementById("hard_button").remove();
         },
+      setFrequencies:function(difficulty){
+          if(difficulty=="easy"){
+            this.frequencies=[261.63,293.66,329.63,349.23,392.00,440.00,493.88,523.25];
+            console.log(this.frequencies);
+            console.log(this.frequencies.length);
+            return;
+          }
+          var currentNote=261.63;
+          var endingNote=523.25;
+          temp=(Math.pow(2,1/12));
+          if(difficulty=="hard"){
+            currentNote=16.35;
+            endingNote=7902.13;
+          }
+          while(currentNote<=endingNote){
+              this.frequencies.push(currentNote);
+              currentNote=currentNote*temp;
+          }
+          console.log(this.frequencies);
+          console.log(this.frequencies.length);
+      },
     },
 })
