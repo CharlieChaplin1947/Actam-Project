@@ -26,6 +26,34 @@ Vue.component('difficulty-button',{
     template:"<button @click='toggleFunction'>{{difficulty}} {{clicked ? 'ON':'OFF'}}</button>"
 })
 
+Vue.component('black-key',{
+    data: function(){
+        return{
+            pressed: false
+        }
+    },
+    methods:{
+        toggleFunction:function(){
+            this.pressed=!this.pressed;
+        }
+    },
+    template:"<div class='black_key' @click='toggleFunction'>{{pressed ? 'ON':'OFF'}}</div>"
+})
+
+Vue.component('white-key',{
+    data: function(){
+        return{
+            pressed: false
+        }
+    },
+    methods:{
+        toggleFunction:function(){
+            this.pressed=!this.pressed;
+        }
+    },
+    template:"<div class='white_key' @click='toggleFunction'>{{pressed ? 'ON':'OFF'}}</div>"
+})
+
 var app=new Vue({
   el: "#app",
   data:{
@@ -66,5 +94,12 @@ var app=new Vue({
           console.log(this.frequencies);
           console.log(this.frequencies.length);
       },
+      renderKeyboard:function(){
+          container=document.getElementById("container")
+          for(var i=0;i<5;i++){
+              newButton=document.createElement("key.black");
+              document.body.insertBefore(newButton,container)
+          }
+      }
     },
 })
