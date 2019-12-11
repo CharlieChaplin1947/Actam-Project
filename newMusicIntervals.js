@@ -25,6 +25,13 @@ Vue.component('key',{
     template:"<div @click='printName'>{{notename}}</div>"
 })
 
+Vue.component('play-interval-button',{
+    methods:{playAgain:function(){
+        app.playInterval();
+    }},
+    template:"<button @click='playAgain'>Play the interval again!</button>"
+})
+
 var app=new Vue({
     el:"#app",
     data:{
