@@ -6,7 +6,9 @@
 
             <body>
                 <div id="app">
-                    <navbar id="navbar" :title="mainTitle"></navbar>
+                    <navbar class="navbar" :title="mainTitle"></navbar>
+                    <div class="navbar" v-if="render">{{difficulty}} mode</div>
+                    <div class="navbar" v-else>Select the difficulty:</div>
                     <div class="container" id="button-container">
                         <difficulty-button difficulty="easy"></difficulty-button>
                         <difficulty-button difficulty="medium"></difficulty-button>

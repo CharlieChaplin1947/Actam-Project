@@ -12,6 +12,7 @@ Vue.component('difficulty-button',{
             difficultySelected:function(){app.setDifficulty(this.difficulty);
             app.setFrequencies();
             app.renderKeyboard();
+            app.playInterval();
             app.clearDifficultyButtons();}},
     template:"<button @click='difficultySelected'>{{difficulty}}</button>"
 })
@@ -30,7 +31,7 @@ var app=new Vue({
         mainTitle:"MusicIntervals",
         render:false,
         difficulty:String,
-        frequencies:[]
+        frequencies:[],
     },
     methods:{setDifficulty:function(difficulty){this.difficulty=difficulty;},
 clearDifficultyButtons:function(){document.getElementById("button-container").remove();},
@@ -53,5 +54,26 @@ setFrequencies:function(){if(this.difficulty=="easy"){
       currentNote=currentNote*temp;
   }
   console.log(this.frequencies);
-  console.log(this.frequencies.length);}}
+  console.log(this.frequencies.length);
+},
+playInterval:function(){var audioCtx=new AudioContext();
+var noteDuration=1.0;
+var endingNote=261.63;
+var oscillatorNode=audioCtx.createOscillator();
+var gainNode=audioCtx.createGain();
+oscillatorNode.connect(gainNode)
+gainNode.connect(audioCtx.destination)
+gainNode.gain.value=0;
+var startTime=audioCtx.currentTime;
+oscillatorNode.frequency.setValueAtTime(440,startTime);
+oscillatorNode.start();
+gainNode.gain.setValueAtTime(0,startTime);
+gainNode.gain.linearRampToValueAtTime(1,startTime+noteDuration/2);
+gainNode.gain.linearRampToValueAtTime(0,startTime+noteDuration);
+
+oscillatorNode.frequency.setValueAtTime(endingNote,startTime+noteDuration);
+gainNode.gain.linearRampToValueAtTime(1,startTime+noteDuration*3/2);
+gainNode.gain.linearRampToValueAtTime(0,startTime+noteDuration*2);
+}
+}
 })
