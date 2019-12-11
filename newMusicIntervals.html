@@ -1,0 +1,35 @@
+<html>
+        <head>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+                <link rel="stylesheet" type="text/css" href="newMusicIntervals.css">
+            </head>
+
+            <body>
+                <div id="app">
+                    <navbar id="navbar" :title="mainTitle"></navbar>
+                    <div class="container" id="button-container">
+                        <difficulty-button difficulty="easy"></difficulty-button>
+                        <difficulty-button difficulty="medium"></difficulty-button>
+                        <difficulty-button difficulty="hard"></difficulty-button>
+                    </div>
+                    <div v-if="render" class="container" id="black-keys-container">
+                        <key class="key black" notename="C#"></key>
+                        <key class="key black" notename="D#"></key>
+                        <key class="key black" notename="F#"></key>
+                        <key class="key black" notename="G#"></key>
+                        <key class="key black" notename="A#"></key>
+                    </div>
+                    <div v-if="render" class="container" id="white-keys-container">
+                        <key class="white key" notename="C"></key>
+                        <key class="white key" notename="D"></key>
+                        <key class="white key" notename="E"></key>
+                        <key class="white key" notename="F"></key>
+                        <key class="white key" notename="G"></key>
+                        <key class="white key" notename="A"></key>
+                        <key class="white key" notename="B"></key>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+            </body>
+</html>

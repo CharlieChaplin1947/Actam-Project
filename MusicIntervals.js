@@ -20,6 +20,7 @@ Vue.component('difficulty-button',{
             this.clicked=!this.clicked;
             app.changeDifficulty(this.difficulty);
             app.setFrequencies(this.difficulty);
+            app.renderKeyboard();
             app.clearDifficultyButtons();
         }
     },
@@ -29,29 +30,37 @@ Vue.component('difficulty-button',{
 Vue.component('black-key',{
     data: function(){
         return{
-            pressed: false
+            pressed: false,
+            render: false
         }
+    },
+    props:{
+        note:String
     },
     methods:{
         toggleFunction:function(){
             this.pressed=!this.pressed;
         }
     },
-    template:"<div class='black_key' @click='toggleFunction'>{{pressed ? 'ON':'OFF'}}</div>"
+    template:"<div class='black_key' @click='toggleFunction'>{{note}} {{pressed ? 'ON':'OFF'}}</div>"
 })
 
 Vue.component('white-key',{
     data: function(){
         return{
-            pressed: false
+            pressed: false,
+            render:false
         }
+    },
+    props:{
+        note:String
     },
     methods:{
         toggleFunction:function(){
             this.pressed=!this.pressed;
         }
     },
-    template:"<div class='white_key' @click='toggleFunction'>{{pressed ? 'ON':'OFF'}}</div>"
+    template:"<div class='white_key' @click='toggleFunction'>{{note}}  {{pressed ? 'ON':'OFF'}}</div>"
 })
 
 var app=new Vue({
@@ -95,11 +104,14 @@ var app=new Vue({
           console.log(this.frequencies.length);
       },
       renderKeyboard:function(){
-          container=document.getElementById("container")
-          for(var i=0;i<5;i++){
-              newButton=document.createElement("key.black");
-              document.body.insertBefore(newButton,container)
-          }
+          black_keys=document.getElementsByClassName("black_key");
+          black_keys.forEach(function(currentValue){
+            currentValue.render=true;
+          });
+          white_keys=document.getElementsByClassName("white_keys");
+          white_keys.forEach(function(currentValue){
+              currentValue.render=true;
+          })
       }
     },
 })
