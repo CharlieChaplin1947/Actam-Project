@@ -39,6 +39,7 @@ var app=new Vue({
         render:false,
         difficulty:String,
         frequencies:[],
+        noteLabels:[],
         endingNoteFreq:[],
         startingNoteFreq:[]
     },
@@ -50,6 +51,7 @@ setFrequencies:function(){if(this.difficulty=="easy"){
     console.log(this.frequencies);
     console.log(this.frequencies.length);
     this.initialiseInterval();
+    this.initialiseNoteLabels();
     return;
   }
   var currentNote=261.63;
@@ -67,6 +69,7 @@ setFrequencies:function(){if(this.difficulty=="easy"){
   console.log(this.frequencies.length);
   //this.endingNoteFreq.push(261.63);
   this.initialiseInterval();
+  this.initialiseNoteLabels();
 },
 playInterval:function(){var audioCtx=new AudioContext();
 var noteDuration=1.0;
@@ -96,6 +99,25 @@ if(this.difficulty=="easy"){
 else{
     var index=Math.round(Math.random()*(this.frequencies.length-1));
     this.startingNoteFreq.push(this.frequencies[index]);
-}}
+}},
+initialiseNoteLabels:function(){
+    if(this.difficulty=="easy"){
+        this.noteLabels=["C4","D4","E4","F4","G4","A4","B4"];
+        return
+    }
+    if(this.difficulty=="medium"){
+        var startingIndex=4;
+    }
+    else{var startingIndex=0;}
+    var notes=["C","D","E","F","G","A","B"]
+    for(var octave=0;octave<this.frequencies.length/12;octave++){
+        for(var note=0;note<notes.length;note++){
+            console.log(notes[note]+startingIndex);
+            this.noteLabels.push(notes[note]+startingIndex);
+            console.log(notes[note]+startingIndex+"#");
+            this.noteLabels.push(notes[note]+startingIndex+"#");
+        }
+        startingIndex++;
+    }
 }
-})
+}})
