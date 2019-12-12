@@ -39,6 +39,8 @@ var app=new Vue({
         render:false,
         difficulty:String,
         frequencies:[],
+        endingNoteFreq:[],
+        startingNoteFreq:[]
     },
     methods:{setDifficulty:function(difficulty){this.difficulty=difficulty;},
 clearDifficultyButtons:function(){document.getElementById("button-container").remove();},
@@ -47,6 +49,7 @@ setFrequencies:function(){if(this.difficulty=="easy"){
     this.frequencies=[261.63,293.66,329.63,349.23,392.00,440.00,493.88,523.25];
     console.log(this.frequencies);
     console.log(this.frequencies.length);
+    this.initialiseInterval();
     return;
   }
   var currentNote=261.63;
@@ -62,17 +65,20 @@ setFrequencies:function(){if(this.difficulty=="easy"){
   }
   console.log(this.frequencies);
   console.log(this.frequencies.length);
+  //this.endingNoteFreq.push(261.63);
+  this.initialiseInterval();
 },
 playInterval:function(){var audioCtx=new AudioContext();
 var noteDuration=1.0;
-var endingNote=261.63;
+//var endingNote=261.63;
+var endingNote=this.endingNoteFreq[0]
 var oscillatorNode=audioCtx.createOscillator();
 var gainNode=audioCtx.createGain();
 oscillatorNode.connect(gainNode)
 gainNode.connect(audioCtx.destination)
 gainNode.gain.value=0;
 var startTime=audioCtx.currentTime;
-oscillatorNode.frequency.setValueAtTime(440,startTime);
+oscillatorNode.frequency.setValueAtTime(this.startingNoteFreq[0],startTime);
 oscillatorNode.start();
 gainNode.gain.setValueAtTime(0,startTime);
 gainNode.gain.linearRampToValueAtTime(1,startTime+noteDuration/2);
@@ -81,6 +87,15 @@ gainNode.gain.linearRampToValueAtTime(0,startTime+noteDuration);
 oscillatorNode.frequency.setValueAtTime(endingNote,startTime+noteDuration);
 gainNode.gain.linearRampToValueAtTime(1,startTime+noteDuration*3/2);
 gainNode.gain.linearRampToValueAtTime(0,startTime+noteDuration*2);
+},
+initialiseInterval:function(){var index=Math.round(Math.random()*(this.frequencies.length-1));
+this.endingNoteFreq.push(this.frequencies[index]);
+if(this.difficulty=="easy"){
+    this.startingNoteFreq.push(440);
 }
+else{
+    var index=Math.round(Math.random()*(this.frequencies.length-1));
+    this.startingNoteFreq.push(this.frequencies[index]);
+}}
 }
 })
