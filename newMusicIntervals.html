@@ -9,12 +9,12 @@
                     <navbar class="navbar" :title="mainTitle"></navbar>
                     <div class="navbar" v-if="render">{{difficulty}} mode</div>
                     <div class="navbar" v-else>Select the difficulty:</div>
-                    <div class="container" id="button-container">
+                    <div v-if="!render" class="container" id="button-container">
                         <difficulty-button difficulty="easy"></difficulty-button>
                         <difficulty-button difficulty="medium"></difficulty-button>
                         <difficulty-button difficulty="hard"></difficulty-button>
                     </div>
-                    <div v-if="render" class="container" id="black-keys-container">
+                    <div v-if="render && difficulty!='easy'" class="container" id="black-keys-container">
                         <key class="key black" notename="C#"></key>
                         <key class="key black" notename="D#"></key>
                         <key class="key black" notename="F#"></key>
@@ -30,7 +30,24 @@
                         <key class="white key" notename="A"></key>
                         <key class="white key" notename="B"></key>
                     </div>
+                    <div class="navbar" v-if="difficulty=='hard'">You are looking at octave number:{{currentOctave[0]}}</div>
+                    <div class="navbar" v-if="render">The first note is:{{startingNoteLabel}}</div>
+                    <div class="navbar" v-if="render">Score:{{score[0]}}</div>
                     <play-interval-button v-if="render"></play-interval-button>
+                    <div v-if="difficulty=='hard'" class="dropdown">
+                        <button class="dropbtn">Octave</button>
+                        <div class="dropdown-content">
+                          <a onclick="app.changeOctave(0)" href="#">0</a>
+                          <a onclick="app.changeOctave(1)" href="#">1</a>
+                          <a onclick="app.changeOctave(2)" href="#">2</a>
+                          <a onclick="app.changeOctave(3)" href="#">3</a>
+                          <a onclick="app.changeOctave(4)" href="#">4</a>
+                          <a onclick="app.changeOctave(5)" href="#">5</a>
+                          <a onclick="app.changeOctave(6)" href="#">6</a>
+                          <a onclick="app.changeOctave(7)" href="#">7</a>
+                          <a onclick="app.changeOctave(8)" href="#">8</a>
+                        </div>
+                      </div> 
                     </div>
                     </div>
                 </div>
