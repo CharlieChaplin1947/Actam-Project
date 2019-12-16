@@ -13,7 +13,7 @@ Vue.component('difficulty-button',{
             app.setFrequencies();
             app.renderKeyboard();
             app.playInterval();
-            app.clearDifficultyButtons();}},
+        }},
     template:"<button @click='difficultySelected'>{{difficulty}}</button>"
 })
 
@@ -21,8 +21,12 @@ Vue.component('key',{
     props:{notename:String},
     methods:{printName:function(){
         console.log(this.notename);
-    }},
-    template:"<div @click='printName'>{{notename}}</div>"
+    },
+checkCorrectness:function(){
+    notelabel=this.notename.slice(0,1)+app.currentOctave[0]+this.notename.slice(1);
+    app.checkCorrectness(notelabel);
+}},
+    template:"<div @click='checkCorrectness'>{{notename}}</div>"
 })
 
 Vue.component('play-interval-button',{
@@ -41,17 +45,20 @@ var app=new Vue({
         frequencies:[],
         noteLabels:[],
         endingNoteFreq:[],
-        startingNoteFreq:[]
+        startingNoteFreq:[],
+        startingNoteLabel:String,
+        currentOctave:[],
+        score:[]
     },
     methods:{setDifficulty:function(difficulty){this.difficulty=difficulty;},
-clearDifficultyButtons:function(){document.getElementById("button-container").remove();},
 renderKeyboard:function(){this.render=true},
 setFrequencies:function(){if(this.difficulty=="easy"){
-    this.frequencies=[261.63,293.66,329.63,349.23,392.00,440.00,493.88,523.25];
-    console.log(this.frequencies);
-    console.log(this.frequencies.length);
+    this.frequencies=[261.63,293.66,329.63,349.23,392.00,440.00,493.88];
     this.initialiseInterval();
     this.initialiseNoteLabels();
+    this.saveFirstLabel();
+    this.currentOctave.push(4);
+    this.score.push(0);
     return;
   }
   var currentNote=261.63;
@@ -65,13 +72,14 @@ setFrequencies:function(){if(this.difficulty=="easy"){
       this.frequencies.push(currentNote);
       currentNote=currentNote*temp;
   }
-  console.log(this.frequencies);
-  console.log(this.frequencies.length);
-  //this.endingNoteFreq.push(261.63);
   this.initialiseInterval();
   this.initialiseNoteLabels();
+  this.saveFirstLabel();
+  this.currentOctave.push(4);
+  this.score.push(0);
 },
 playInterval:function(){var audioCtx=new AudioContext();
+    console.log(this.frequencies);
 var noteDuration=1.0;
 //var endingNote=261.63;
 var endingNote=this.endingNoteFreq[0]
@@ -112,12 +120,49 @@ initialiseNoteLabels:function(){
     var notes=["C","D","E","F","G","A","B"]
     for(var octave=0;octave<this.frequencies.length/12;octave++){
         for(var note=0;note<notes.length;note++){
-            console.log(notes[note]+startingIndex);
             this.noteLabels.push(notes[note]+startingIndex);
-            console.log(notes[note]+startingIndex+"#");
             this.noteLabels.push(notes[note]+startingIndex+"#");
         }
         startingIndex++;
     }
+},
+changeOctave:function(newOctave){
+    this.currentOctave.pop(0);
+    this.currentOctave.push(newOctave);
+},
+checkCorrectness:function(clickedNote){
+    index=this.noteLabels.indexOf(clickedNote);
+    if(this.frequencies[index]==this.endingNoteFreq){
+        window.alert("correct :-)");
+        number=this.score[0];
+        number++;
+        this.score.pop(0);
+        this.score.push(number);
+        this.endingNoteFreq.pop(0);
+        this.startingNoteFreq.pop(0);
+        this.initialiseInterval();
+        this.saveFirstLabel();
+        this.playInterval();
+    }
+    else{
+        window.alert("wrong :-(");
+        window.alert("game over");
+        this.render=false;
+        this.difficulty="";
+        this.frequencies=[];
+        this.noteLabels=[];
+        this.endingNoteFreq=[];
+        this.startingNoteFreq=[];
+        this.currentOctave=[];
+        this.score=[];
+    }
+},
+saveFirstLabel:function(){
+    index=this.frequencies.indexOf(this.startingNoteFreq[0]);
+    if(this.difficulty!="hard"){
+        this.startingNoteLabel=this.noteLabels[index].slice(0,1)+this.noteLabels[index].slice(2);
+        return
+    }
+    this.startingNoteLabel=this.noteLabels[index];
 }
 }})
