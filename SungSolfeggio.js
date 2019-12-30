@@ -38,6 +38,7 @@ y=100;
 noteNumber=0;
 vx=1;
 vy=0;
+var dataArray=new Float32Array();
 
 function draw(){
     requestAnimationFrame(draw);
@@ -63,7 +64,6 @@ function drawSolfeggio(){
         ctx.arc(x,app.scoresheet_heigth-index*noteSize-noteSize*2,noteSize,0,2*Math.PI);
         ctx.stroke();
         x-=vx;
-        console.log(app.noteLabels[index]);
     };
     if(x==0){
         noteNumber++;
@@ -83,13 +83,24 @@ app.initialiseLabels();
 
 drawSolfeggio();
 
+var audio_ctx=new AudioContext();
+var source;
 //the following catches stream from the microphone
 const handleSuccess=function(stream){
     if(window.URL){
         //do something
+        //I want the stream to be saved as a float32array or somehow converted to that format
+        source=audio_ctx.createMediaStreamSource(stream);
+        var analyser=audio_ctx.createAnalyser();
+        source.connect(analyser);
+        result=new Float32Array(analyser.frequencyBinCount);
+        analyser.getFloatFrequencyData(result);
+        console.log(result);
     }
     else{
         //do something else
+        source=audio_ctx.createMediaStreamSource(stream);
+        console.log(dataArray);
     }
 }
 
