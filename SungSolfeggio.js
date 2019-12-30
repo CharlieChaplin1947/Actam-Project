@@ -82,3 +82,15 @@ app.generateSolfeggio();
 app.initialiseLabels();
 
 drawSolfeggio();
+
+//the following catches stream from the microphone
+const handleSuccess=function(stream){
+    if(window.URL){
+        //do something
+    }
+    else{
+        //do something else
+    }
+}
+
+navigator.mediaDevices.getUserMedia({audio:true, video:false}).then(handleSuccess);
