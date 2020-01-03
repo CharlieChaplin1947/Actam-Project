@@ -88,20 +88,41 @@ var source;
 //the following catches stream from the microphone
 const handleSuccess=function(stream){
     if(window.URL){
-        //do something
-        //I want the stream to be saved as a float32array or somehow converted to that format
+        start_time=audio_ctx.currentTime;
+        var j;
+        j=start_time;
+        console.log(stream);
         source=audio_ctx.createMediaStreamSource(stream);
+        console.log(source);
         var analyser=audio_ctx.createAnalyser();
+        analyser.minDecibels=-90;
+        analyser.maxDecibels=-10;
         source.connect(analyser);
-        result=new Float32Array(analyser.frequencyBinCount);
-        analyser.getFloatFrequencyData(result);
+        result=new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteTimeDomainData(result);  //Sees a silent stream
+        while(j<start_time+1000){
         console.log(result);
-    }
+        console.log(analyser);
+        j+=1}
+        source.connect(audio_ctx.destination);
+        
+        
+
+        //var mediaRecorder=new MediaRecorder(stream);
+        //mediaRecorder.start(100);
+        //mediaRecorder.ondataavailable=function(e){
+        //    var temp;
+        //    temp=e.data;
+        //    console.log(temp);
+        //    console.log(temp.stream());
+        }
     else{
         //do something else
         source=audio_ctx.createMediaStreamSource(stream);
         console.log(dataArray);
     }
 }
+
+
 
 navigator.mediaDevices.getUserMedia({audio:true, video:false}).then(handleSuccess);
