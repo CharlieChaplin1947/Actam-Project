@@ -14,6 +14,17 @@ Vue.component('repeat-button',{methods:{
     template:"<button @click='repeatSolfeggio'>Repeat current Solfeggio</button>"
 })
 
+Vue.component('generate-button',{methods:{
+    newGeneration:function(){
+        app.generatedNotes=[];
+        app.generateSolfeggio();
+        if(noteNumber==8){app.flag=true};
+        noteNumber=0;
+        x=app.scoresheet_width;
+    }
+},
+template:"<button @click='newGeneration'>Generate a new Solfeggio</button>"})
+
 var app=new Vue({
     el:"#app",
     data:{
