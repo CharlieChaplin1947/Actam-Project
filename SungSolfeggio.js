@@ -5,6 +5,15 @@ Vue.component('navbar',{
     template:"<h3>{{title}}</h3>"
 })
 
+Vue.component('repeat-button',{methods:{
+    repeatSolfeggio:function(){
+    if(noteNumber==8){app.flag=true};
+    noteNumber=0;
+    x=app.scoresheet_width;}
+},
+    template:"<button @click='repeatSolfeggio'>Repeat current Solfeggio</button>"
+})
+
 var app=new Vue({
     el:"#app",
     data:{
