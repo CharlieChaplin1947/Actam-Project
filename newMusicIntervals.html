@@ -191,7 +191,7 @@ changeOctave:function(newOctave){
 },
 checkCorrectness:function(clickedNote){
     index=this.noteLabels.indexOf(clickedNote);
-    if(this.frequencies[index]==this.endingNoteFreq){
+    if(this.frequencies[index]==this.endingNoteFreq[0]){
         window.alert("correct :-)");
         number=this.score[0];
         number++;
@@ -205,6 +205,12 @@ checkCorrectness:function(clickedNote){
     }
     else{
         window.alert("wrong :-(");
+        string1="the correct note was: ";
+        string2=this.noteLabels[this.frequencies.indexOf(this.endingNoteFreq[0])];
+        if(this.difficulty!="hard"){
+            string2=string2.slice(0,1)+string2.slice(2);
+        }
+        window.alert(string1.concat(string2));
         window.alert("game over");
         this.render=false;
         this.difficulty="";
