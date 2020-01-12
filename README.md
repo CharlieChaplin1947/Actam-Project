@@ -15,8 +15,8 @@ corresponding functionality.
 The following project has the purpose of helping music students exercising their ear to music intervals.
 In order to do so, two main functionalities are developed:
 
-------------------------------------MUSIC INTERVALS---------------------------------------------------------------|
-														  |
+------------------------------------MUSIC INTERVALS---------------------------------------------------------------
+														  
 1)MusicIntervals has the purpose of letting the listener exercising in recognizing the notes that are played      
 externally. In order to do so, the program first plays a known note and an unknown note sequentially and          
 the listener has to click on the button associated to the note he thinks is corresponding to the second of the    
