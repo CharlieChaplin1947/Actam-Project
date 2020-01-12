@@ -31,7 +31,7 @@ MusicIntervals implements three difficulties:                                   
                                                                                                                   |
 	-medium:only in the central octave of a piano. The starting note is displayed.                            |
                                                                                                                   |
-	-hard:all octaves on a piano. The starting note is displayed. The listener has also to select an octave.  |
+	-hard:more octaves on a piano. The starting note is displayed. The listener has also to select an octave. |
                                                                                                                   |
 In all difficulties, except the specified exceptions, the music intervals are randomly generated.                 |
                                                                                                                   |
