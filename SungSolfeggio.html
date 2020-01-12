@@ -149,7 +149,11 @@ const handleSuccess=function(stream){
          source.connect(analyser);
          app.flag=true;       
     }
-    else{}
+    else{
+        var source=audio_ctx.createMediaStreamSource(stream);
+         source.connect(analyser);
+         app.flag=true;
+    }
 }
 
 navigator.mediaDevices.getUserMedia({audio:true, video:false}).then(handleSuccess);
