@@ -1,12 +1,12 @@
 # Start the application
 
-1)Download the files "main_menu.html","newMusicIntervals","SungSolfeggio.html" in the same folder.
+1)Download the files "main_menu.html","MusicIntervals","SungSolfeggio.html" in the same folder.
 
 2)Open "main_menu.html" on your browser.
 
 3)Enjoy!
 
-Alternatively you can open "newMusicIntervals.html" or "SungSolfeggio.html" individually to access the
+Alternatively you can open "MusicIntervals.html" or "SungSolfeggio.html" individually to access the
 corresponding functionality.
 
 
