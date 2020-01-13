@@ -27,7 +27,9 @@ of consecutive intervals that he recognized. However, if the listener makes a mi
 resetted and he must start from the beginning.                                                                    
 MusicIntervals implements three difficulties:                                                                     
                                                                                                                   
-	-easy:only in the central octave of a piano and only on white keyboards. The starting note is always A.   
+	-easy:only in the central octave of a piano and only on white keyboards. The starting note is always A.
+	
+	![text alt](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/EasyMode.png)
                                                                                                                   
 	-medium:only in the central octave of a piano. The starting note is displayed.                            
                                                                                                                   
