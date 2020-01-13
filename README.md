@@ -24,16 +24,19 @@ said notes.
                                                                                                                   
 MusicIntervals lets the listener repeat the interval as many times as he wants and keeps track of the number      
 of consecutive intervals that he recognized. However, if the listener makes a mistake once, the score is         
-resetted and he must start from the beginning.                                                                    
+resetted and he must start from the beginning.
 MusicIntervals implements three difficulties:                                                                     
                                                                                                                   
 	-easy:only in the central octave of a piano and only on white keyboards. The starting note is always A.
-	
-	![text alt](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/EasyMode.png)
+![text alt](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/EasyMode.png)
                                                                                                                   
-	-medium:only in the central octave of a piano. The starting note is displayed.                            
+	-medium:only in the central octave of a piano. The starting note is displayed.
+![text alt](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/MediumMode.png)
+
                                                                                                                   
-	-hard:more octaves on a piano. The starting note is displayed. The listener has also to select an octave. 
+	-hard:more octaves on a piano. The starting note is displayed. The listener has also to select an octave.
+![text alt](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/HardMode.png)
+
                                                                                                                   
 In all difficulties, except the specified exceptions, the music intervals are randomly generated.                 
                                                                                                                   
