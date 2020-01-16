@@ -32,6 +32,9 @@
             <div class="container">
             <canvas id="scoresheet" heigth="scoresheet_heigth" width="scoresheet_width"></canvas>
             <h3>{{indications}}</h3>
+            <h3 id="up-arrow">&#8657</h3>
+            <h3 id="check-mark">&#10004</h3>
+            <h3 id="low-arrow">&#8659</h3>
             <repeat-button></repeat-button>
             <generate-button></generate-button>
             </div>
@@ -187,13 +190,24 @@ function checkFrequency(){
     if(sungFrequency<lowerLimit){
         if(app.flag==false){app.indications="";}
         else{
-        app.indications="you have to go Higher!"}
+        app.indications="you have to go Higher!";
+        document.getElementById("up-arrow").style.color="red";
+        document.getElementById("check-mark").style.color="black";
+        document.getElementById("low-arrow").style.color="black";
+        }
     }else{
     if(sungFrequency>upperLimit){
-        app.indications="you have to go lower!"
+        app.indications="you have to go lower!";
+        document.getElementById("up-arrow").style.color="black";
+        document.getElementById("check-mark").style.color="black";
+        document.getElementById("low-arrow").style.color="red";
     }else{
         if(app.flag==false){app.indications="Solfeggio finished";}else{
-        app.indications="that's exactely right!!";}
+        app.indications="that's exactely right!!";
+        document.getElementById("up-arrow").style.color="black";
+        document.getElementById("check-mark").style.color="green";
+        document.getElementById("low-arrow").style.color="black";
+        }
     }
         }
     
