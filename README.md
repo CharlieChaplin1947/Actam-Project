@@ -25,16 +25,16 @@ said notes.
 MusicIntervals lets the listener repeat the interval as many times as he wants and keeps track of the number      
 of consecutive intervals that he recognized. However, if the listener makes a mistake once, the score is         
 resetted and he must start from the beginning.
-MusicIntervals implements three difficulties:                                                                     
+MusicIntervals implements three difficulties, here is a brief description and visualization of each:                                                                     
                                                                                                                   
 	-easy:only in the central octave of a piano and only on white keyboards. The starting note is always A.
 ![text alt](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/EasyMode.png)
                                                                                                                   
-	-medium:only in the central octave of a piano. The starting note is displayed.
+	-medium:only in the central octave of a piano, with also black keyboards. The starting note is displayed.
 ![text alt](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/MediumMode.png)
 
                                                                                                                   
-	-hard:more octaves on a piano. The starting note is displayed. The listener has also to select an octave.
+	-hard:more octaves on a piano. The starting note is displayed. The listener has also to select an octave through the drop-down menu highlighted in red.
 ![text alt](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/HardMode.png)
 
                                                                                                                   
@@ -49,7 +49,8 @@ a generated one.
 The functionality randomly generates a Solfeggio in C major (more tonalities could come in the future) and        
 displays it note by note on a pentagram, in a sol key. The student has to sing the note that is currently         
 displayed on the pentagram, and the program will automatically inform if he must sing higher or lower             
-(in pitch terms).                                                                                                 
+(in pitch terms) through a line of text and a basic symbology of two arrows and a check mark. In particular, if the intonation is right, the check mark will be highlighted in green. Otherwise, the arrows will be highlighted in red in the direction of the intonation the singer must pursue (i.e. the user must sing higher, the upper arrow will be highlighted in red).
+Here is a visualization of the said functionality
                                                                                                                   
 The solfeggio is made of eight randomly generated notes and gives the possibilities to repeat the solfeggio       
 from the start or generate a brand new one.                                                                       
