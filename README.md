@@ -28,14 +28,14 @@ resetted and he must start from the beginning.
 MusicIntervals implements three difficulties, here is a brief description and visualization of each:                                                                     
                                                                                                                   
 	-easy:only in the central octave of a piano and only on white keyboards. The starting note is always A.
-![text alt](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/EasyMode.png)
+![easy mode](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/EasyMode.png)
                                                                                                                   
 	-medium:only in the central octave of a piano, with also black keyboards. The starting note is displayed.
-![text alt](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/MediumMode.png)
+![medium mode](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/MediumMode.png)
 
                                                                                                                   
 	-hard:more octaves on a piano. The starting note is displayed. The listener has also to select an octave through the drop-down menu highlighted in red.
-![text alt](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/HardMode.png)
+![hard mode](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/HardMode.png)
 
                                                                                                                   
 In all difficulties, except the specified exceptions, the music intervals are randomly generated.                 
@@ -50,7 +50,13 @@ The functionality randomly generates a Solfeggio in C major (more tonalities cou
 displays it note by note on a pentagram, in a sol key. The student has to sing the note that is currently         
 displayed on the pentagram, and the program will automatically inform if he must sing higher or lower             
 (in pitch terms) through a line of text and a basic symbology of two arrows and a check mark. In particular, if the intonation is right, the check mark will be highlighted in green. Otherwise, the arrows will be highlighted in red in the direction of the intonation the singer must pursue (i.e. the user must sing higher, the upper arrow will be highlighted in red).
-Here is a visualization of the said functionality
+Here is a visualization of the said functionality:
+
+![right intonation](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/Right.png)
+
+![higher intonation](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/higher_intonation.png)
+
+![lower intonation](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/lower_intonation.png)
                                                                                                                   
 The solfeggio is made of eight randomly generated notes and gives the possibilities to repeat the solfeggio       
 from the start or generate a brand new one.                                                                       
