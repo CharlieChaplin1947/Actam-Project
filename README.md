@@ -50,11 +50,18 @@ The functionality randomly generates a Solfeggio in C major (more tonalities cou
 displays it note by note on a pentagram, in a sol key. The student has to sing the note that is currently         
 displayed on the pentagram, and the program will automatically inform if he must sing higher or lower             
 (in pitch terms) through a line of text and a basic symbology of two arrows and a check mark. In particular, if the intonation is right, the check mark will be highlighted in green. Otherwise, the arrows will be highlighted in red in the direction of the intonation the singer must pursue (i.e. the user must sing higher, the upper arrow will be highlighted in red).
-Here is a visualization of the said functionality:
 
+Here is a visualization of the said functionality:
+	
+	-The intonation is right, the check mark is hightlighted in green.
+	
 ![right intonation](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/Right.png)
 
+	-The user must sing higher in pitch, the upper arrow is highlighted in red.
+
 ![higher intonation](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/higher_intonation.png)
+
+	-The user must sing lower in pitch, the lower arrow is highlighted in red.
 
 ![lower intonation](https://github.com/CharlieChaplin1947/Actam-Project/blob/master/images/lower_intonation.png)
                                                                                                                   
