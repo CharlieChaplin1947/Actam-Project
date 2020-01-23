@@ -73,3 +73,8 @@ from the start or generate a brand new one.
 NOTE:SungSolfeggio is based on the microphone of your PC, remember to enable it at the start of the SungSolfeggio.
 NOTE:SungSolfeggio may not be extremely accurate, some tollerance in the sung frequency is adopted since singing
 an exact sinusoid is not possible by human standards, and the microphone is partly influenced by the environment.
+
+# Video Presentation
+
+A presentatione in form of a youtube video can be found at the link: https://youtu.be/xzyqiXNkpFU
+The presentation is performed in Italian only.
